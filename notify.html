@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+	
+		<!-- jQuery -->
+		<script src="js/jquery-2.1.3.min.js"></script>
+		<!-- bootstrap -->
+		<script src="js/bootstrap.min.js"></script>
+		
+		<script>
+			var Notification = window.Notification || window.mozNotification || window.webkitNotification;
+
+			Notification.requestPermission(function (permission) {
+			});
+
+			function notify() {
+			
+				var textInput = $("#notificationText").val(); 
+			
+				var instance = new Notification(textInput);
+
+				instance.onclick = function () {
+					// Something to do
+				};
+				instance.onerror = function () {
+					// Something to do
+				};
+				instance.onshow = function () {
+					// Something to do
+				};
+				instance.onclose = function () {
+					// Something to do
+				};
+			}
+		</script>
+	</head>
+	<body>
+		<div class="container text-center">
+			<h1> Push Notifications </h1>
+			<div class="form-inline">
+				<form>
+					<input type="text" class="form-control" placeholder="Enter Text" id="notificationText"></input>
+					<button type="button" class="btn btn-default" onclick="notify()">Notify me!</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
