@@ -9,15 +9,16 @@
 		<script src="js/bootstrap.min.js"></script>
 		
 		<script>
-			var Notification = window.Notification || window.mozNotification || window.webkitNotification;
-
-			Notification.requestPermission(function (permission) {
+			$( document ).ready(function() {
+				var alertSound = document.getElementById("alertSound");
+				var Notification = window.Notification || window.mozNotification || window.webkitNotification;
+				Notification.requestPermission(function (permission) { });
 			});
+					
 
 			function notify() {
 			
-				var textInput = $("#notificationText").val(); 
-			
+				var textInput = $("#notificationText").val();
 				var instance = new Notification(textInput);
 
 				instance.onclick = function () {
@@ -27,7 +28,7 @@
 					// Something to do
 				};
 				instance.onshow = function () {
-					// Something to do
+					alertSound.play();
 				};
 				instance.onclose = function () {
 					// Something to do
@@ -45,5 +46,10 @@
 				</form>
 			</div>
 		</div>
+		
+		<audio id="alertSound">
+		  <source src="audio/winlogon.wav" type="audio/wav">
+		</audio>
+		
 	</body>
 </html>
